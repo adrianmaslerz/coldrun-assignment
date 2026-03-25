@@ -25,13 +25,12 @@ export class CreateTruckDto {
   @IsNotEmpty()
   name: string;
 
-  @ApiPropertyOptional({
+  @ApiProperty({
     description: 'Initial status (defaults to Out Of Service)',
     enum: TruckStatus,
   })
-  @IsOptional()
   @IsEnum(TruckStatus)
-  status?: TruckStatus;
+  status: TruckStatus;
 
   @ApiPropertyOptional({ description: 'Optional description' })
   @IsOptional()
