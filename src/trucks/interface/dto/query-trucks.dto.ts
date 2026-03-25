@@ -1,7 +1,7 @@
 import { IsEnum, IsOptional, IsString, IsIn } from 'class-validator';
 import { ApiPropertyOptional } from '@nestjs/swagger';
-import { TruckStatus } from '../../domain/truck-status.enum.js';
-import { TruckProps } from '../../domain/truck.aggregate.js';
+import { TruckStatus } from '../../domain/enums/truck-status.enum';
+import { TruckProps } from '../../domain/interfaces/truck-props.interface';
 
 const SORTABLE_FIELDS: (keyof TruckProps)[] = [
   'code',

@@ -1,8 +1,8 @@
 import { IQueryHandler, QueryHandler } from '@nestjs/cqrs';
-import { GetTruckQuery } from './get-truck.query.js';
-import { TruckProps } from '../../domain/truck.aggregate.js';
-import { TruckRepository } from '../ports/truck.repository.js';
-import { TruckNotFoundException } from '../../domain/exceptions/truck-not-found.exception.js';
+import { GetTruckQuery } from './get-truck.query';
+import { TruckRepository } from '../../domain/repositories/truck.repository';
+import { TruckProps } from '../../domain/interfaces/truck-props.interface';
+import { TruckNotFoundException } from '../../domain/exceptions';
 
 @QueryHandler(GetTruckQuery)
 export class GetTruckHandler implements IQueryHandler<GetTruckQuery> {

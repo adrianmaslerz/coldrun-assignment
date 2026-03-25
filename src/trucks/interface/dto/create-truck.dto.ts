@@ -5,29 +5,30 @@ import {
   IsEnum,
   IsOptional,
 } from 'class-validator';
-import { ApiPropertyOptional } from '@nestjs/swagger';
-import { TruckStatus } from '../../domain/truck-status.enum.js';
+import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
+import { TruckStatus } from '../../domain/enums/truck-status.enum';
 
-export class UpdateTruckDto {
-  @ApiPropertyOptional({
+export class CreateTruckDto {
+  @ApiProperty({
     description: 'Unique alphanumeric code',
-    example: 'TRUCK002',
+    example: 'TRUCK001',
   })
-  @IsOptional()
   @IsString()
   @IsNotEmpty()
   @Matches(/^[a-zA-Z0-9]+$/, {
     message: 'code must contain only alphanumeric characters',
   })
-  code?: string;
+  code: string;
 
-  @ApiPropertyOptional({ description: 'Truck name', example: 'Scania R500' })
-  @IsOptional()
+  @ApiProperty({ description: 'Truck name', example: 'Volvo FH16' })
   @IsString()
   @IsNotEmpty()
-  name?: string;
+  name: string;
 
-  @ApiPropertyOptional({ description: 'Truck status', enum: TruckStatus })
+  @ApiPropertyOptional({
+    description: 'Initial status (defaults to Out Of Service)',
+    enum: TruckStatus,
+  })
   @IsOptional()
   @IsEnum(TruckStatus)
   status?: TruckStatus;

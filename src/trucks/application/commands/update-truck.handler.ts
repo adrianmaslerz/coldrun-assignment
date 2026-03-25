@@ -1,9 +1,9 @@
 import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
-import { UpdateTruckCommand } from './update-truck.command.js';
-import { TruckProps } from '../../domain/truck.aggregate.js';
-import { TruckRepository } from '../ports/truck.repository.js';
-import { TruckDomainService } from '../../domain/truck-domain.service.js';
-import { TruckNotFoundException } from '../../domain/exceptions/truck-not-found.exception.js';
+import { UpdateTruckCommand } from './update-truck.command';
+import { TruckRepository } from '../../domain/repositories/truck.repository';
+import { TruckDomainService } from '../../domain/services/truck-domain.service';
+import { TruckProps } from '../../domain/interfaces/truck-props.interface';
+import { TruckNotFoundException } from '../../domain/exceptions';
 
 @CommandHandler(UpdateTruckCommand)
 export class UpdateTruckHandler implements ICommandHandler<UpdateTruckCommand> {

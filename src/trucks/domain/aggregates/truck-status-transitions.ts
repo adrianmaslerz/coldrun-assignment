@@ -1,4 +1,4 @@
-import { TruckStatus } from './truck-status.enum.js';
+import { TruckStatus } from '../enums/truck-status.enum';
 
 const { OUT_OF_SERVICE, LOADING, TO_JOB, AT_JOB, RETURNING } = TruckStatus;
 

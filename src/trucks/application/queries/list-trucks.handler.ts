@@ -1,7 +1,7 @@
 import { IQueryHandler, QueryHandler } from '@nestjs/cqrs';
-import { ListTrucksQuery } from './list-trucks.query.js';
-import { TruckProps } from '../../domain/truck.aggregate.js';
-import { TruckRepository } from '../ports/truck.repository.js';
+import { ListTrucksQuery } from './list-trucks.query';
+import { TruckRepository } from '../../domain/repositories/truck.repository';
+import { TruckProps } from '../../domain/interfaces/truck-props.interface';
 
 @QueryHandler(ListTrucksQuery)
 export class ListTrucksHandler implements IQueryHandler<ListTrucksQuery> {

@@ -1,31 +1,10 @@
 import { v4 as uuidv4 } from 'uuid';
-import { TruckStatus } from './truck-status.enum.js';
-import { isStatusTransitionAllowed } from './truck-status-transitions.js';
-import { InvalidStatusTransitionException } from './exceptions/invalid-status-transition.exception.js';
-
-export interface CreateTruckProps {
-  code: string;
-  name: string;
-  status?: TruckStatus;
-  description?: string;
-}
-
-export interface UpdateTruckProps {
-  code?: string;
-  name?: string;
-  status?: TruckStatus;
-  description?: string | null;
-}
-
-export interface TruckProps {
-  id: string;
-  code: string;
-  name: string;
-  status: TruckStatus;
-  description: string | null;
-  createdAt: Date;
-  updatedAt: Date;
-}
+import { isStatusTransitionAllowed } from './truck-status-transitions';
+import { TruckProps } from '../interfaces/truck-props.interface';
+import { TruckStatus } from '../enums/truck-status.enum';
+import { CreateTruckProps } from '../interfaces/create-truck-props.interface';
+import { UpdateTruckProps } from '../interfaces/update-truck-props.interface';
+import { InvalidStatusTransitionException } from '../exceptions';
 
 export class Truck {
   private _id: string;
@@ -46,7 +25,6 @@ export class Truck {
     this._updatedAt = props.updatedAt;
   }
 
-  /** Factory — tworzenie nowego trucka */
   static create(props: CreateTruckProps): Truck {
     const now = new Date();
     return new Truck({
@@ -60,16 +38,10 @@ export class Truck {
     });
   }
 
-  /** Rehydracja z persistence */
   static fromProps(props: TruckProps): Truck {
     return new Truck(props);
   }
 
-  /**
-   * Aktualizacja pól aggregate.
-   * Jeśli zmienia się status — walidujemy przejście w aggregate (invariant).
-   * Logika wymagająca dostępu do repo (np. unikalność kodu) jest w domain service.
-   */
   update(props: UpdateTruckProps): void {
     if (props.status !== undefined) {
       this.transitionStatus(props.status);
@@ -92,8 +64,6 @@ export class Truck {
     }
     this._status = newStatus;
   }
-
-  // -- Getters (read-only) --
 
   get id(): string {
     return this._id;

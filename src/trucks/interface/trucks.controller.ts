@@ -12,15 +12,15 @@ import {
 } from '@nestjs/common';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 import { ApiTags, ApiOperation, ApiResponse, ApiParam } from '@nestjs/swagger';
-import { CreateTruckDto } from './dto/create-truck.dto.js';
-import { UpdateTruckDto } from './dto/update-truck.dto.js';
-import { QueryTrucksDto } from './dto/query-trucks.dto.js';
-import { CreateTruckCommand } from '../application/commands/create-truck.command.js';
-import { UpdateTruckCommand } from '../application/commands/update-truck.command.js';
-import { DeleteTruckCommand } from '../application/commands/delete-truck.command.js';
-import { GetTruckQuery } from '../application/queries/get-truck.query.js';
-import { ListTrucksQuery } from '../application/queries/list-trucks.query.js';
-import { TruckProps } from '../domain/truck.aggregate.js';
+import { CreateTruckDto } from './dto/create-truck.dto';
+import { UpdateTruckDto } from './dto/update-truck.dto';
+import { QueryTrucksDto } from './dto/query-trucks.dto';
+import { CreateTruckCommand } from '../application/commands/create-truck.command';
+import { UpdateTruckCommand } from '../application/commands/update-truck.command';
+import { DeleteTruckCommand } from '../application/commands/delete-truck.command';
+import { GetTruckQuery } from '../application/queries/get-truck.query';
+import { ListTrucksQuery } from '../application/queries/list-trucks.query';
+import { TruckProps } from '../domain/interfaces/truck-props.interface';
 
 @ApiTags('Trucks')
 @Controller('trucks')

@@ -1,6 +1,7 @@
 import { HttpStatus } from '@nestjs/common';
-import { TruckStatus } from '../truck-status.enum.js';
-import { DomainException } from './domain.exception.js';
+
+import { DomainException } from './domain.exception';
+import { TruckStatus } from '../enums/truck-status.enum';
 
 export class InvalidStatusTransitionException extends DomainException {
   constructor(from: TruckStatus, to: TruckStatus) {

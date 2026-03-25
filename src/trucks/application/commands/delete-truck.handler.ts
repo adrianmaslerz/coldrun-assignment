@@ -1,7 +1,7 @@
 import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
-import { DeleteTruckCommand } from './delete-truck.command.js';
-import { TruckRepository } from '../ports/truck.repository.js';
+import { DeleteTruckCommand } from './delete-truck.command';
 import { TruckNotFoundException } from '../../domain/exceptions';
+import { TruckRepository } from '../../domain/repositories/truck.repository';
 
 @CommandHandler(DeleteTruckCommand)
 export class DeleteTruckHandler implements ICommandHandler<DeleteTruckCommand> {

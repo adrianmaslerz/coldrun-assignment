@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { TruckRepository } from './truck.repository.js';
-import { DuplicateTruckCodeException } from './exceptions/duplicate-truck-code.exception.js';
+import { TruckRepository } from '../repositories/truck.repository';
+import { DuplicateTruckCodeException } from '../exceptions';
 
 @Injectable()
 export class TruckDomainService {

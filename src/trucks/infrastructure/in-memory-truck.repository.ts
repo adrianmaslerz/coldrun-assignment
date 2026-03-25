@@ -1,10 +1,9 @@
 import { Injectable } from '@nestjs/common';
-import {
-  TruckRepository,
-  ListTrucksFilter,
-  ListTrucksSort,
-} from '../domain/truck.repository';
-import { Truck, TruckProps } from '../domain/truck.aggregate.js';
+import { TruckRepository } from '../domain/repositories/truck.repository';
+import { TruckProps } from '../domain/interfaces/truck-props.interface';
+import { Truck } from '../domain/aggregates/truck.aggregate';
+import { ListTrucksFilter } from '../domain/interfaces/list-trucks-filter.interface';
+import { ListTrucksSort } from '../domain/interfaces/list-trucks-sort.interface';
 
 @Injectable()
 export class InMemoryTruckRepository extends TruckRepository {

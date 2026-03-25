@@ -1,4 +1,4 @@
-import { TruckStatus } from '../../domain/truck-status.enum.js';
+import { TruckStatus } from '../../domain/enums/truck-status.enum';
 
 export class CreateTruckCommand {
   constructor(
